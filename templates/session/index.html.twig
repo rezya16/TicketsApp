@@ -1,0 +1,26 @@
+{% block title %}Tickets App{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Название</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <th scope="row">{{ film.id }}</th>
+                <td><a href="/films/{{ film.id }}">{{ film.title }}</a></td>
+                <td>{{ film.price }}</td>
+                <td>{{ film.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

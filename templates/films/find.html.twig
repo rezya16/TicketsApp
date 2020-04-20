@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tickets App{% endblock %}
+
+{% block body %}
+
+    <table class="table" style="border: #0c5460 2px">
+            <thead class="thead-dark">
+                <tr class="container"></tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Sessions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{ film.id }}</th>
+                    <td>{{ film.title }}</td>
+                    <td>{{ film.price }}</td>
+                    <td>{{ film.description }}</td>
+                    <td>
+                        {% if sessions %}
+                            {% for session in sessions %}
+                                <a href="#" id="session" data-toggle="modal" data-id="session.id" data-target="#exampleModalScrollable">{{ session.date|date("H:i") }}</a>
+                            {% endfor %}
+                        {% else %}
+                        <a href="#">Нет доступных сеансов</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">{{ film.title }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
